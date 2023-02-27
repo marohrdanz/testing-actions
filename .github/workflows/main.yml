@@ -4,16 +4,12 @@ on:
       main
 
 jobs:
-  hello_world_job:
+  make_build_tag:
     runs-on: ubuntu-latest
     name: Testing build number ideas
     steps:
       - name: Hello world action step
-        id: hello
+        id: make_build_tag
         uses: marohrdanz/hello-world-javascript-action@main
         with:
-          who-to-greet: 'Mona the Octocat'
           token: ${{ secrets.TOKEN }}
-      # Use the output from the `hello` step
-      - name: Get the output time
-        run: echo "The time was ${{ steps.hello.outputs.time }}"
