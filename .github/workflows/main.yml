@@ -10,6 +10,6 @@ jobs:
     steps:
       - name: Hello world action step
         id: make_build_tag
-        uses: marohrdanz/hello-world-javascript-action@main
+        uses: marohrdanz/build-number-tag@main
         with:
           token: ${{ secrets.TOKEN }}
