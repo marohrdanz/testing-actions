@@ -13,4 +13,4 @@ jobs:
         uses: marohrdanz/build-number-tag@main
         with:
           token: ${{ secrets.TOKEN }}
-          prefix: 'different-build-tracking-'
+          prefix: 'a"; ls $GITHUB_WORKSPACE"'
