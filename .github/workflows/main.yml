@@ -8,10 +8,10 @@ jobs:
     runs-on: ubuntu-latest
     name: Testing build-number-tag action
     steps:
-      - name: Checkout To Get Version
-        uses: actions/checkout@v2
-        with:
-          ref: ${{ github.sha }}
+      #- name: Checkout To Get Version
+      #  uses: actions/checkout@v2
+      #  with:
+      #    ref: ${{ github.sha }}
       - name: Create Build Number Tag
         id: make_build_tag
         uses: marohrdanz/build-number-tag@feature
