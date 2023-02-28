@@ -6,7 +6,7 @@ on:
 jobs:
   make_build_tag:
     runs-on: ubuntu-latest
-    name: Testing build number ideas
+    name: Testing build-number-tag action
     steps:
       - name: Create Build Number Tag
         id: make_build_tag
