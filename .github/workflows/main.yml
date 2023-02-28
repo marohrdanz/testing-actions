@@ -10,6 +10,6 @@ jobs:
     steps:
       - name: Create Build Number Tag
         id: make_build_tag
-        uses: marohrdanz/build-number-tag@main
+        uses: marohrdanz/build-number-tag@use-core
         with:
           token: ${{ secrets.TOKEN }}
