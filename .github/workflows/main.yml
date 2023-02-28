@@ -11,5 +11,5 @@ jobs:
       - name: Create Build Number Tag
         id: make_build_tag
         uses: marohrdanz/build-number-tag@mary-dev
-        #with:
-        #  token: ${{ secrets.TOKEN }}
+        with:
+          token: ${{ secrets.TOKEN }}
