@@ -13,3 +13,7 @@ jobs:
         uses: marohrdanz/build-number-tag@use-core
         with:
           token: ${{ secrets.TOKEN }}
+      - name: Check output
+        id: check_output
+        run: |
+           echo "Checking build output... ${{ steps.make_build_tag.outputs.build_number }}"
