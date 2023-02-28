@@ -13,7 +13,7 @@ jobs:
         uses: marohrdanz/build-number-tag@use-core
         with:
           token: ${{ secrets.TOKEN }}
-          prefix: 'demo-tag'
+          prefix: 'demo-tag-'
       - name: Check output
         id: check_output
         run: |
