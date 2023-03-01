@@ -27,7 +27,7 @@ jobs:
         uses: marohrdanz/build-number-tag@version-number
         with:
           token: ${{ secrets.TOKEN }}
-          #prefix: '-my-build-number-'
+          prefix: 'my-build-number-'
           #version_prefix: ${{ steps.get_version_number.outputs.version_number }}
       - name: Check build number
         id: check_build_number
