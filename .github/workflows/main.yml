@@ -8,17 +8,23 @@ jobs:
     runs-on: ubuntu-latest
     name: Testing build-number-tag action
     steps:
-      - name: Checkout To Get Version
+      - name: Checkout
         uses: actions/checkout@v3
         with:
           ref: ${{ github.sha }}
-      - name: Create Build Number Tag
-        id: make_build_tag
-        uses: marohrdanz/build-number-tag@feature
+      - name: Get version number
+        id: get_version_number
+        uses: marohrdanz/extract-version-from-file@main
         with:
-          token: ${{ secrets.TOKEN }}
-          prefix: 'demo-tag-'
+          file_path: 'CompatibilityManager.js'
+          start_string: 'CM.version = '
+      #- name: Create Build Number Tag
+      #  id: make_build_tag
+      #  uses: marohrdanz/build-number-tag@feature
+      #  with:
+      #    token: ${{ secrets.TOKEN }}
+      #    prefix: 'demo-tag-'
       - name: Check output
         id: check_output
         run: |
-           echo "Checking build output... ${{ steps.make_build_tag.outputs.build_number }}"
+           echo "Checking version number output... ${{ steps.get_version_number.outputs.version_number }}"
