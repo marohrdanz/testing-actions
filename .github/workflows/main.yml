@@ -28,7 +28,7 @@ jobs:
         with:
           token: ${{ secrets.TOKEN }}
           prefix: 'demo-tag-'
-          version_prefix: '5.6.3'
+          version_prefix: ${{ steps.get_version_number.outputs.version_number }}
       - name: Check build number
         id: check_build_number
         run: |
