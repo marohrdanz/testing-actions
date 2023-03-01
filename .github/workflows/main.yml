@@ -18,13 +18,18 @@ jobs:
         with:
           file_path: 'CompatibilityManager.js'
           start_string: 'CM.version = '
-      #- name: Create Build Number Tag
-      #  id: make_build_tag
-      #  uses: marohrdanz/build-number-tag@feature
-      #  with:
-      #    token: ${{ secrets.TOKEN }}
-      #    prefix: 'demo-tag-'
       - name: Check output
         id: check_output
         run: |
            echo "Checking version number output... ${{ steps.get_version_number.outputs.version_number }}"
+      - name: Create Build Number Tag
+        id: make_build_tag
+        uses: marohrdanz/build-number-tag@version-number
+        with:
+          token: ${{ secrets.TOKEN }}
+          prefix: 'demo-tag-'
+          version_prefix: '5.6.3'
+      - name: Check output
+        id: check_output
+        run: |
+           echo "Checking make tag output... ${{ steps.make_build_tag.outputs.build_number }}"
