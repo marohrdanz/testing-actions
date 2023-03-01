@@ -6,7 +6,7 @@ on:
 jobs:
   make_build_tag:
     runs-on: ubuntu-latest
-    name: Testing build-number-tag action
+    name: Creating build number tag based on version
     steps:
       - name: Checkout
         uses: actions/checkout@v3
