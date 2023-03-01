@@ -18,7 +18,7 @@ jobs:
         with:
           file_path: 'CompatibilityManager.js'
           start_string: 'CM.version = '
-      - name: Check output
+      - name: Check version number
         id: check_version_number
         run: |
            echo "Checking version number output... ${{ steps.get_version_number.outputs.version_number }}"
@@ -29,7 +29,7 @@ jobs:
           token: ${{ secrets.TOKEN }}
           prefix: 'demo-tag-'
           version_prefix: '5.6.3'
-      - name: Check output
+      - name: Check build number
         id: check_build_number
         run: |
            echo "Checking make tag output... ${{ steps.make_build_tag.outputs.build_number }}"
