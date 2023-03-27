@@ -1,3 +1,5 @@
+name: Workflow1
+
 on:
   push:
     branches:
@@ -6,30 +8,29 @@ on:
 jobs:
   make_build_tag:
     runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 1
     name: Creating build number tag based on version
     steps:
+      # https://github.com/marketplace/actions/checkout
       - name: Checkout
         uses: actions/checkout@v3
         with:
           ref: ${{ github.sha }}
+      # https://github.com/marohrdanz/extract-version-from-file
+      # This action outputs the version number as 'version_number'.
       - name: Get version number
         id: get_version_number
         uses: marohrdanz/extract-version-from-file@v1.0.0
         with:
-          file_path: 'CompatibilityManager.js'
+          file_path: 'NGCHM/WebContent/javascript/CompatibilityManager.js'
           start_string: 'CM.version = '
-      - name: Check version number
-        id: check_version_number
-        run: |
-           echo "Checking version number output... ${{ steps.get_version_number.outputs.version_number }}"
+      # https://github.com/marohrdanz/build-number-tag
+      # This action outputs the tag name as 'build_number'.
       - name: Create Build Number Tag
         id: make_build_tag
         uses: marohrdanz/build-number-tag@v1.0.0
         with:
           token: ${{ secrets.TOKEN }}
-          prefix: '-my-build-number-'
+          prefix: '-build-'
           version_prefix: ${{ steps.get_version_number.outputs.version_number }}
-      - name: Check build number
-        id: check_build_number
-        run: |
-           echo "Checking make tag output... ${{ steps.make_build_tag.outputs.build_number }}"
