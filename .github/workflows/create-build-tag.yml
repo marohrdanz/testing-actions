@@ -23,7 +23,7 @@ jobs:
         id: get_version_number
         uses: marohrdanz/extract-version-from-file@v1.0.0
         with:
-          file_path: 'NGCHM/WebContent/javascript/CompatibilityManager.js'
+          file_path: 'CompatibilityManager.js'
           start_string: 'CM.version = '
       # https://github.com/marohrdanz/build-number-tag
       # This action outputs the tag name as 'build_number'.
