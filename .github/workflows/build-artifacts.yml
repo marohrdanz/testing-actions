@@ -29,4 +29,5 @@ jobs:
                run_id: context.payload.workflow_run.id,
             });
             console.log("mary was here");
+            console.log({allArtifacts});
             
