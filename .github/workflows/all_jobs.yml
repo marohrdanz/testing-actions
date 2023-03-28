@@ -8,9 +8,9 @@ on:
 jobs:
   make_build_tag:
     runs-on: ubuntu-latest
+    name: Creating build number tag based on version
     strategy:
       max-parallel: 1
-    name: Creating build number tag based on version
     steps:
       # https://github.com/marketplace/actions/checkout
       - name: Checkout
@@ -34,3 +34,25 @@ jobs:
           token: ${{ secrets.TOKEN }}
           prefix: '-build-'
           version_prefix: ${{ steps.get_version_number.outputs.version_number }}
+  build_artifacts:
+    runs-on: ubuntu-latest
+    name: Build Artifacts
+    needs: make_build_tag
+    strategy:
+      max-parallel: 1
+    env:
+      Artifacts_REPOSITORY: 'marohrdanz/NG-CHM-Artifacts'
+      Artifacts_BRANCH: 'main'
+    steps:
+      - name: latest commit
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.sha }}
+      - name: Get Version Number
+        uses: actions/github-script@v6
+        with:
+          script: |
+            console.log("mary was here. build number is ", needs.make_build_tag.outputs.build_number);
+
+
+            
