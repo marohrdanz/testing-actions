@@ -52,7 +52,7 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            console.log("mary was here. build number is ", needs.make_build_tag.outputs.build_number);
+            console.log("mary was here. build number is ", ${{ needs.make_build_tag.outputs.build_number }});
 
 
             
